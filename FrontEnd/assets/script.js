@@ -3,7 +3,7 @@ async function works(){
     const response=await fetch("http://localhost:5678/api/works")
     const resultat=await response.json()
     console.log(resultat);
-    //création d'une constante rattachée à la class 'gallery'
+    //création d'une constante rattachée à la class '.gallery'
     const gallery=document.querySelector('.gallery');
     //boucle pour créer autant de balise que déléments du tableau
     for(let i=0; i<resultat.length; i++){
@@ -28,10 +28,14 @@ async function categories(){
     const response=await fetch('http://localhost:5678/api/categories')
     const resultat=await response.json()
     console.log(resultat);
+    //création du bouton "tous" dans une balise
     const tous=document.createElement('button');
+    //appélation du button dans le HTML
     tous.innerHTML='Tous';
+    //création d'une constante rattachée à la class '.contenerbutton'
     const contenerButton=document.querySelector('.contenerbutton');
     contenerButton.appendChild(tous);
+    //boucle pour créer autant de button que de catégories
     for(let i=0; i<resultat.length; i++){
         const button=document.createElement('button');
         button.innerHTML=resultat[i].name;
