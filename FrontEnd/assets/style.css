@@ -125,6 +125,35 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+.contenerbutton{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: flex;
+	justify-content: center;
+}
+button{
+	background-color: white;
+	color:#1D6154;
+	font-family: 'Syne';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	margin-right: 10px;
+	padding-top: 9px;
+	padding-right: 20px;
+	padding-bottom: 9px;
+	padding-left: 20px;
+	transition-duration: 400ms;
+}
+button:hover{
+	background: #1D6154;
+	color:white;
+	transition-duration: 400ms;
+}
 .gallery {
 	width: 100%;
 	display: grid;
