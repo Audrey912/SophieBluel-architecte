@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background: #FFFEF8;
 }
 header {
 	display: flex;
@@ -125,6 +126,8 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+/*ajout du design des boutons*/
 .contenerbutton{
 	margin-top: 50px;
 	margin-bottom: 50px;
@@ -154,6 +157,8 @@ button:hover{
 	color:white;
 	transition-duration: 400ms;
 }
+/*fin*/
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -215,3 +220,55 @@ footer nav ul {
 	margin: 2em
 }
 
+/*login.html*/
+#login{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#gras {
+	font-weight: 600;
+}
+#color{
+	color: #1D6154;
+	margin-bottom: 40px;
+}
+form{
+	margin-bottom: 30px;
+}
+label{
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 16px;
+	color: #3D3D3D;
+}
+input{
+	width: 379px;
+	height: 51px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+	margin-top: 10px;
+}
+#form{
+	width: 179px;
+	height: 36px;
+	left: 630px;
+	top: 529px;
+	background: #1D6154;
+	border-radius: 60px;
+	color: #FFFFFF;
+	margin-bottom: 30px;
+	margin-top: 10px;
+}
+#lien{
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration-line: underline;
+	color: #3D3D3D;
+}
