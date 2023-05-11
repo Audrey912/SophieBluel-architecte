@@ -151,6 +151,7 @@ button{
 	padding-bottom: 9px;
 	padding-left: 20px;
 	transition-duration: 400ms;
+	background: #FFFEF8
 }
 button:hover{
 	background: #1D6154;
