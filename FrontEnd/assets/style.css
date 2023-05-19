@@ -273,3 +273,9 @@ input{
 	text-decoration-line: underline;
 	color: #3D3D3D;
 }
+#errorlogin{
+	color: red;
+	text-decoration-line: underline;
+	margin-bottom: 10px;
+	-moz-text-decoration-line: underline;
+}

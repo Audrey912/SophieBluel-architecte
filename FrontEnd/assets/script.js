@@ -82,5 +82,7 @@ async function works(){
 };
 works();
 
+const loginValide=window.localStorage.getItem("response");
+
 
 
