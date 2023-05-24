@@ -1,4 +1,4 @@
-//création de constante rattachées à leur id respective
+//création de constante rattachées à leur id ou balise respective
 const email=document.querySelector('#email');
 const password=document.querySelector('#password');
 const button=document.querySelector('button');

@@ -279,3 +279,29 @@ input{
 	margin-bottom: 10px;
 	-moz-text-decoration-line: underline;
 }
+
+.modif1,
+.modif2{
+	display: flex;
+	display: none;
+}
+
+.modif1{
+	margin-top: 15px;
+	margin-left: 55px;
+}
+
+.modif2{
+	margin-top: 10px;
+	margin-left: 35px;
+}
+
+.titleprojet{
+	display: flex;
+	justify-content: center;
+}
+
+.icone1,
+.icone2{
+	padding-right: 10px;
+}
