@@ -101,14 +101,16 @@ const openModal=function(e){
 const closeModal=function(e){
     if(modal===null)return
     e.preventDefault()
-    modal.style.display = 'none'
+    window.setTimeout(function(){
+        modal.style.display = 'none'
+        modal=null
+    },500)
     modal.setAttribute('aria-hidden', 'true')
     modal.removeAttribute('aria-modal')
     modal=target
     modal.removeEventListener('click', closeModal)
     modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
     modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
-    modal=null
 };
 //fonction pour empécher la propagation du click reservé à la fermeture de la modal
 const stopPropagation=function(e){
