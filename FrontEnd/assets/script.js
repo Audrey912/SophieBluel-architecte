@@ -82,7 +82,44 @@ async function works(){
 };
 works();
 
-const loginValide=window.localStorage.getItem("response");
+let modal=null;
+//création de la constante openModal avec sa fonction qui prendra en paramètre l'événement
+const openModal=function(e){
+    //preventDefault car il ne faut pas que le click sur le lien fonctionne convenablement
+    e.preventDefault()
+    //récupération de l'élément cible sur le lien
+    const target=document.querySelector(e.target.getAttribute('href'))
+    //affichage de la boîte modal
+    target.style.display = null
+    target.removeAttribute('aria-hidden')
+    target.setAttribute('aria-modal', 'true')
+    modal=target
+    modal.addEventListener('click', closeModal)
+    modal.querySelector('.js-modal-close').addEventListener('click', closeModal)
+    modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation)
+};
+const closeModal=function(e){
+    if(modal===null)return
+    e.preventDefault()
+    modal.style.display = 'none'
+    modal.setAttribute('aria-hidden', 'true')
+    modal.removeAttribute('aria-modal')
+    modal=target
+    modal.removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
+    modal=null
+};
+//fonction pour empécher la propagation du click reservé à la fermeture de la modal
+const stopPropagation=function(e){
+    e.stopPropagation()
+};
+//selection de tous les éléments ayant la class js-modal
+//forEach(a=>... = selection de chaque lien
+document.querySelectorAll('.js-modal').forEach(a=>{
+    //pour chaque lien ajoute un addEventListener pour lorsqu'au click sur ce lien un appelle à la fonction openModal soit fait
+    a.addEventListener('click', openModal)
+});
 
 
 

@@ -27,10 +27,10 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
-			<div class="modif1">
+			<a href="#modal1" class="modif1">
 				<i class="fi fi-ts-file-edit icone1"></i>
 				<p>modifier</p>
-			</div>
+			</a>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -42,10 +42,18 @@
 	<section id="portfolio">
 		<div class="titleprojet">
 			<h2>Mes Projets</h2>
-			<div class="modif2">
+			<a href="#modal1" class="modif2 js-modal">
 				<i class="fi fi-ts-file-edit icone2"></i>
 				<p>modifier</p>
-			</div>
+			</a>
+			<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
+				<div class="modal-wrapper js-modal-stop">
+					<button class="js-modal-close"><i class="fi fi-br-cross"></i></button>
+					<h3 class="titlemodal">Galerie photo</h3>
+					<button class="form">Ajouter une photo</button>
+					<a class="warning">Supprimer la galerie</a>
+				</div>
+			</aside>
 		</div>
 		<div class="contenerbutton">
 		</div>
