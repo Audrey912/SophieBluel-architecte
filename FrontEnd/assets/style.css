@@ -285,7 +285,7 @@ input{
 	color: #000000;
 	display: flex;
 	text-decoration: none;
-
+	/*display: none;*/
 }
 
 .modif1{
@@ -364,6 +364,10 @@ input{
 	to{ transform: translateY(50px);}
 }
 
+.js-modal-stop{
+	color:#000000;
+	text-decoration: none;
+}
 
 h3{
 	font-family: 'Work Sans';
@@ -378,4 +382,12 @@ h3{
 .warning{
 	text-decoration: none;
 	color: #D65353;
+}
+
+.modal-gallery{
+	display: flex;
+}
+
+.modal-gallery figure{
+	width: 20%;
 }

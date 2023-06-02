@@ -84,11 +84,11 @@ works();
 
 let modal=null;
 //création de la constante openModal avec sa fonction qui prendra en paramètre l'événement
-const openModal=function(e){
+const openModal=async function(e){
     //preventDefault car il ne faut pas que le click sur le lien fonctionne convenablement
     e.preventDefault()
     //récupération de l'élément cible sur le lien
-    const target=document.querySelector(e.target.getAttribute('href'))
+    const target=document.querySelector(e.currentTarget.getAttribute('href'))
     //affichage de la boîte modal
     target.style.display = null
     target.removeAttribute('aria-hidden')
@@ -97,6 +97,28 @@ const openModal=function(e){
     modal.addEventListener('click', closeModal)
     modal.querySelector('.js-modal-close').addEventListener('click', closeModal)
     modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation)
+    const response=await fetch("http://localhost:5678/api/works")
+    const resultat=await response.json()
+    console.log(resultat);
+    const gallery=document.querySelector('.modal-gallery');
+    //boucle pour créer autant de balise que déléments du tableau
+    for(let i=0; i<resultat.length; i++){
+        console.log(resultat[i]);
+        //création des balises dans le HTML
+        const projetDiv=document.createElement('figure');
+        const imgProjet=document.createElement('img');
+        const titleProjet=document.createElement("figcaption");
+        const trashIcone=document.createElement('i');
+        trashIcone.classList.add("fi", "fi-rr-trash");
+        //indication des éléments à récupérer dans le tableau et à afficher
+        imgProjet.src=resultat[i].imageUrl;
+        titleProjet.innerHTML=resultat[i].title;
+        //rattachement des enfants aux parents
+        gallery.appendChild(projetDiv);
+        projetDiv.appendChild(trashIcone);
+        projetDiv.appendChild(imgProjet);
+        projetDiv.appendChild(titleProjet);
+    }						
 };
 const closeModal=function(e){
     if(modal===null)return
