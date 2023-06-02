@@ -82,7 +82,32 @@ async function works(){
 };
 works();
 
+//syntaxe arrowfunction verification présence token
+const isTokenExists = ()=>{
+    const token=localStorage.getItem("response");
+
+    if(token){
+        return true;
+    };
+
+    return false;
+};
+
+//fonction qui affiche les lien "modifier" et cache les boutons de catégorie à la connexion
+const showModifyButtonsAndHideCategoryButtons = ()=>{
+    if(isTokenExists()===true){
+        const modifButton1=document.querySelector(".modif1");
+        const modifButton2=document.querySelector(".modif2");
+        modifButton1.classList.add("visible");
+        modifButton2.classList.add("visible");
+        const contenerButton=document.querySelector(".contenerbutton");
+        contenerButton.classList.add("hidden");
+    }
+};
+
 let modal=null;
+console.log("verifmethode", isTokenExists());
+showModifyButtonsAndHideCategoryButtons();
 //création de la constante openModal avec sa fonction qui prendra en paramètre l'événement
 const openModal=async function(e){
     //preventDefault car il ne faut pas que le click sur le lien fonctionne convenablement
