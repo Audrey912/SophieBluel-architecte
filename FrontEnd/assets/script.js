@@ -138,7 +138,7 @@ const openModal=async function(e){
         const trashIcone=document.createElement('i');
         trashIcone.classList.add("fi", "fi-rr-trash");
         trashIcone.addEventListener('click', async function(){
-            const response=await fetch("http://localhost:5678/api/works/" + resultat[i].id, {
+            const response=await fetch("http://localhost:5678/api/works/" + {
                 method:'DELETE',
                 headers:{ "Content-Type": "application/json" },
                 body:resultat[i].id,
