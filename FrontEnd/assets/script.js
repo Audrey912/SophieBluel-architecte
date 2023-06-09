@@ -1,13 +1,16 @@
+window.addEventListener('click', function(event){
+    console.log("coucou", event.target);
+});
 //appel de l'API Get/works
 async function works(){
     const response=await fetch("http://localhost:5678/api/works")
     const resultat=await response.json()
-    console.log(resultat);
+    // console.log(resultat);
     //création d'une constante rattachée à la class '.gallery'
     const gallery=document.querySelector('.gallery');
     //boucle pour créer autant de balise que déléments du tableau
     for(let i=0; i<resultat.length; i++){
-        console.log(resultat[i]);
+        // console.log(resultat[i]);
         //création des balises dans le HTML
         const projetDiv=document.createElement('figure');
         const imgProjet=document.createElement('img');
@@ -23,12 +26,12 @@ async function works(){
     //appel de l'API Get/Categories
     const retour=await fetch('http://localhost:5678/api/categories')
     const categorie=await retour.json()
-    console.log(categorie);
+    // console.log(categorie);
     //création du bouton "tous" dans une balise
     const tous=document.createElement('button');
     //appélation du button dans le HTML
     tous.innerHTML='Tous';
-    console.log(resultat);
+    // console.log(resultat);
     //création d'une constante rattachée à la class '.contenerbutton'
     const contenerButton=document.querySelector('.contenerbutton');
     contenerButton.appendChild(tous);
@@ -56,7 +59,7 @@ async function works(){
                 projetDiv.appendChild(imgProjet);
                 projetDiv.appendChild(titleProjet);
             }
-            console.log(filteredCategorie);
+            // console.log(filteredCategorie);
         })
         //affichage au click sur le bouton tous
         tous.addEventListener("click", function(){
@@ -64,7 +67,7 @@ async function works(){
             gallery.innerHTML="";
             //boucle pour reaffichage de toutes les images
             for(let i=0; i<resultat.length; i++){
-                console.log(resultat[i]);
+                // console.log(resultat[i]);
                 //création des balises dans le HTML
                 const projetDiv=document.createElement('figure');
                 const imgProjet=document.createElement('img');
@@ -106,7 +109,6 @@ const showModifyButtonsAndHideCategoryButtons = ()=>{
 };
 
 let modal=null;
-console.log("verifmethode", isTokenExists());
 showModifyButtonsAndHideCategoryButtons();
 //création de la constante openModal avec sa fonction qui prendra en paramètre l'événement
 const openModal=async function(e){
@@ -124,17 +126,26 @@ const openModal=async function(e){
     modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation)
     const response=await fetch("http://localhost:5678/api/works")
     const resultat=await response.json()
-    console.log(resultat);
+    // console.log(resultat);
     const gallery=document.querySelector('.modal-gallery');
     //boucle pour créer autant de balise que déléments du tableau
     for(let i=0; i<resultat.length; i++){
-        console.log(resultat[i]);
+        // console.log(resultat[i]);
         //création des balises dans le HTML
         const projetDiv=document.createElement('figure');
         const imgProjet=document.createElement('img');
         const titleProjet=document.createElement("figcaption");
         const trashIcone=document.createElement('i');
         trashIcone.classList.add("fi", "fi-rr-trash");
+        trashIcone.addEventListener('click', async function(){
+            const response=await fetch("http://localhost:5678/api/works/" + resultat[i].id, {
+                method:'DELETE',
+                headers:{ "Content-Type": "application/json" },
+                body:resultat[i].id,
+                });
+            });
+            console.log(response)
+        };
         //indication des éléments à récupérer dans le tableau et à afficher
         imgProjet.src=resultat[i].imageUrl;
         titleProjet.innerHTML=resultat[i].title;
@@ -143,8 +154,7 @@ const openModal=async function(e){
         projetDiv.appendChild(trashIcone);
         projetDiv.appendChild(imgProjet);
         projetDiv.appendChild(titleProjet);
-    }						
-};
+    };
 const closeModal=function(e){
     if(modal===null)return
     e.preventDefault()
@@ -164,11 +174,32 @@ const stopPropagation=function(e){
     e.stopPropagation()
 };
 //selection de tous les éléments ayant la class js-modal
-//forEach(a=>... = selection de chaque lien
+//forEach (boucle) [a=>... = selection de chaque lien
 document.querySelectorAll('.js-modal').forEach(a=>{
     //pour chaque lien ajoute un addEventListener pour lorsqu'au click sur ce lien un appelle à la fonction openModal soit fait
     a.addEventListener('click', openModal)
 });
+
+//création d'une fonction pour supprimer les works
+const deleteWork = (jeter)=>{
+
+    console.log("deleteworktest", jeter);
+};
+
+// Parcoure chaque class modal-gallery récupérer les figures
+let modalGallery=document.querySelectorAll('.modal-gallery figure');
+// let figures=modalGallery.querySelectorAll('figure');
+console.log(modalGallery);
+modalGallery.forEach(function(figure) {
+    // Sélectionne la balise <i> à l'intérieur de chaque balise <figure>
+    const icons = figure.querySelector('i');
+  
+    // Parcoure chaque balise <i> à l'intérieur de la balise <figure>
+    icons.forEach(function(icon) {
+      // Fait quelque chose avec chaque balise <i>
+      console.log(icon); // Affiche chaque balise <i> dans la console
+    });
+  });
 
 
 

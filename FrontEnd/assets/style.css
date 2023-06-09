@@ -373,6 +373,9 @@ input{
 	to{ transform: translateY(50px);}
 }
 
+.js-modal-close{
+	position: relative;
+}
 .js-modal-stop{
 	color:#000000;
 }
