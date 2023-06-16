@@ -138,14 +138,12 @@ const openModal=async function(e){
         const trashIcone=document.createElement('i');
         trashIcone.classList.add("fi", "fi-rr-trash");
         trashIcone.addEventListener('click', async function(){
-            const response=await fetch("http://localhost:5678/api/works/" + {
+            const response=await fetch("http://localhost:5678/api/works/" + resultat[i].id, {
                 method:'DELETE',
-                headers:{ "Content-Type": "application/json" },
-                body:resultat[i].id,
+                headers:{ "Content-Type": "application/json", "Authorization":"Bearer " + localStorage.getItem("response")},
                 });
+            console.log("response du fetch", response);
             });
-            console.log(response)
-        };
         //indication des éléments à récupérer dans le tableau et à afficher
         imgProjet.src=resultat[i].imageUrl;
         titleProjet.innerHTML=resultat[i].title;
@@ -154,7 +152,8 @@ const openModal=async function(e){
         projetDiv.appendChild(trashIcone);
         projetDiv.appendChild(imgProjet);
         projetDiv.appendChild(titleProjet);
-    };
+        }};
+
 const closeModal=function(e){
     if(modal===null)return
     e.preventDefault()
